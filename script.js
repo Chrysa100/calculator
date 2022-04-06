@@ -1,7 +1,6 @@
  //get a reference of the parent div
  const buttons = document.querySelector(".buttons");  
-//create the buttons
-const clear = document.createElement('button');
+
 
 
 function add(a,b){
