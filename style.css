@@ -1,4 +1,4 @@
-
+/*idea:shall I change it to 3d-text buttons instead of just buttons?*/
 html{
     font-size: 50px;
     font-family: Arial, Helvetica, sans-serif;
@@ -27,12 +27,12 @@ body {
 
 .display {
     background-color :rgb(220, 220, 231);
+    font-family: monospace;
     height:3rem;
     padding:0.5rem;
     margin-bottom:0.6rem;
     border-radius: 2%;
-   
-
+    text-align: end;
 }
 
 
@@ -49,11 +49,12 @@ button {
     padding:0.2em;
     width:2em;
     border-radius: 10%;
+    /* text-shadow: 2px 2px 1px rgb(124, 93, 122); */
 }
 
 #ac, #equal{
     width:4em;
-    
+      
 }
 #ac {
     background-color: rgb(228, 46, 46);
