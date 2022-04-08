@@ -27,6 +27,9 @@ function toDisplay(btn) {
          num2 = "";
 
     }else {
+        if (display.innerText.length >=10){
+            return
+        }
         if(this.innerText.match(/[0-9,.]/)) {
                 if(operator === ""){ 
                     if( this.innerText === "." && (num1.includes("."))){
@@ -60,7 +63,7 @@ function toDisplay(btn) {
             }
             if(num2 !==""){
                 operate(operator,num1*1,num2*1);
-                display.innerText = result;
+                display.innerText = result.toFixed(2);
                 num1 = result.toString();
                 num2.innerText = "";
                 result.innerText = "";
