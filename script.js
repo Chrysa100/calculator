@@ -15,8 +15,10 @@ buttons.forEach(btn => btn.addEventListener("click",toDisplay));
 
 //function that runs every time a button is clicked
 function toDisplay(btn) {
- 
-    if(this.innerText === "AC"){
+    if(this.innerText === "CE" && display.innerText !== ""){
+        display.innerText = display.innerText.slice(0,-1);
+
+    }else if(this.innerText === "AC"){
          display.innerText = "";
          result = "";
          operator = "";
@@ -40,11 +42,16 @@ function toDisplay(btn) {
                     display.innerText = num2;
                 }    
         }else if(this.innerText.match(/[+,*,/,=,-]/)){
+            
             if(operator ===""){
-                operator =  this.innerText;
-                display.innerText = operator;
-                console.log("1operator "+operator);
-                console.log("1action "+action);
+                if(this.innerText === "="){
+                    return;
+                }else{
+                    operator =  this.innerText;
+                    display.innerText = operator;
+                    console.log("1operator "+operator);
+                    console.log("1action "+action);
+                }
             }else{
                 action =  this.innerText;
                 display.innerText = action;
