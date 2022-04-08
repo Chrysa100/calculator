@@ -2,53 +2,78 @@
 const display = document.querySelector('.display');
 const buttons = document.querySelectorAll('button');
 
-//initaialization of num1 & num 2
+//initaialization of variables
 let num1 = "";
 let num2 = "";
 let operator = "";
 let result = "";
 let action = "";
 
+
 //add EventListeners to buttons
 buttons.forEach(btn => btn.addEventListener("click",toDisplay));
 
 //function that runs every time a button is clicked
 function toDisplay(btn) {
+ 
     if(this.innerText === "AC"){
-        display.innerText = "";
+         display.innerText = "";
+         result = "";
+         operator = "";
+         action = "";
+         num1 = "";
+         num2 = "";
+
     }else {
-        if(this.innerText >= 0 && this.innerText <= 9){
-            
-            if(operator === ""){     
-                num1 +=  this.innerText; 
-                display.innerText = num1;
-            }else{
-            num2 += this.innerText;
-            display.innerText = num2;
-            }
-    
+        if(this.innerText.match(/[0-9,.]/)) {
+                if(operator === ""){ 
+                    if( this.innerText === "." && (num1.includes("."))){
+                        return
+                    }
+                    num1 +=  this.innerText; 
+                    display.innerText = num1;          
+                }else{
+                    if( this.innerText === "." && (num2.includes("."))){
+                        return;
+                    }
+                    num2 += this.innerText;
+                    display.innerText = num2;
+                }    
         }else if(this.innerText.match(/[+,*,/,=,-]/)){
             if(operator ===""){
                 operator =  this.innerText;
                 display.innerText = operator;
+                console.log("1operator "+operator);
+                console.log("1action "+action);
             }else{
                 action =  this.innerText;
                 display.innerText = action;
-            }console.log ("G action " +action);
-
+                console.log("2operator "+operator);
+                console.log("2action "+action);
+            }
             if(num2 !==""){
                 operate(operator,num1*1,num2*1);
                 display.innerText = result;
                 num1 = result.toString();
                 num2.innerText = "";
                 result.innerText = "";
-                operator = action;
-                action ="";
+                console.log("3operator "+operator);
+                console.log("3action "+action);
+                if(action !== "="){
+                    operator = action;
+                    action = "";
+                }else{
+                    operator = "";
+                    action = "";
+                }
+                console.log("4operator "+operator);
+                console.log("4action "+action);
                 //operator.innerText = "";
             }  
         }
     }
-      }
+     
+}
     
  
 function add(a,b){
@@ -80,8 +105,6 @@ function operate(operator,a,b){
         }
         num1="";
         num2="";
-        console.log("operate 1 " +num1);
-        console.log("operate 2 " +num2);
         return result;             
 }
 
