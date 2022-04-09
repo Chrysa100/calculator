@@ -62,34 +62,9 @@ button {
     
 }
 #equal{
-    background-color:rgb(150, 192, 83);
-    
+    background-color:rgb(150, 192, 83);   
+}
+#div, #mul, #sub, #add{
+    background-color: rgb(230, 139, 55);
 }
 
-
-/*
-
-.buttons {
-    display:flex;
-    flex-direction: column;
-    background-color:chartreuse;
-    height:10rem;
-    
-}
-.row2{
-    display:flex;
-    flex-direction: row;
-    
-}
-.row3{
-    display:flex;
-    flex-direction: row;
-    
-}
-
-.row4{
-    display:flex;
-    flex-direction: row;
-    
-}
-*/
