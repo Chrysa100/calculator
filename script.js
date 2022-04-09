@@ -45,30 +45,27 @@ function toDisplay(btn) {
                     display.innerText = num2;
                 }    
         }else if(this.innerText.match(/[+,*,/,=,-]/)){
-            
-            if(operator ===""){
+            if(operator === "/" && num2 === "0"){ //check for division by 0
+                display.innerText = "whaaat?";
+                return;
+            }
+        else if(operator === ""){
                 if(this.innerText === "="){
                     return;
                 }else{
                     operator =  this.innerText;
                     display.innerText = operator;
-                    console.log("1operator "+operator);
-                    console.log("1action "+action);
                 }
             }else{
                 action =  this.innerText;
                 display.innerText = action;
-                console.log("2operator "+operator);
-                console.log("2action "+action);
             }
             if(num2 !==""){
                 operate(operator,num1*1,num2*1);
-                display.innerText = result.toFixed(2);
+                display.innerText = result
                 num1 = result.toString();
                 num2.innerText = "";
                 result.innerText = "";
-                console.log("3operator "+operator);
-                console.log("3action "+action);
                 if(action !== "="){
                     operator = action;
                     action = "";
@@ -78,7 +75,6 @@ function toDisplay(btn) {
                 }
                 console.log("4operator "+operator);
                 console.log("4action "+action);
-                //operator.innerText = "";
             }  
         }
     }
@@ -104,6 +100,7 @@ function divide(a,b){
 }
 
 function operate(operator,a,b){
+    
     switch (operator){
         case "+" : add(a,b);
         break;
@@ -115,11 +112,17 @@ function operate(operator,a,b){
         }
         num1="";
         num2="";
+        if(result % 1 != 0){  // check for long decimals and cut to 3
+        result = result.toFixed(3);
+        } 
         return result;             
 }
 
 
 
-/* 
-
+/* I don't need it       
+else if(num1 ==="" || num2 === ""){
+                    display.innerText = "Miss num!";
+                    return;
+                }
  */
